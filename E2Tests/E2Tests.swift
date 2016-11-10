@@ -19,7 +19,7 @@ class E2Tests: XCTestCase {
         let e2Expectation = expectation(description: "e2Expectation")
         
         E2.add(queue: .main, name: eventName) { (response: E2.Response) in
-            print(response.data)
+            print(response.data as! String)
             
             XCTAssertEqual(response.data as! String , "TEST")
             e2Expectation.fulfill()
