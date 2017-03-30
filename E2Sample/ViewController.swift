@@ -15,9 +15,9 @@ class ViewController: UIViewController {
     let apiHandler = { (response: E2.Response) in
         switch(response.result) {
         case .success:
-            print("success:\n \(response.data)")
+            print("success:\n \(response.data as Any)")
         case .failure:
-            print("error:\n \(response.data)")
+            print("error:\n \(response.data as Any)")
         }
     }
     
