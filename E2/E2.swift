@@ -10,16 +10,16 @@ import Foundation
 
 public class E2 {
     
-    fileprivate static let shared = E2()
+    private static let shared = E2()
     
-    fileprivate static let serialQueue = DispatchQueue(label: "com.keygraphix.ios.E2")
+    private static let serialQueue = DispatchQueue(label: "com.keygraphix.ios.E2")
     
-    fileprivate struct EventInfo {
+    private struct EventInfo {
         let queue: E2.Queue
         let handler: (E2.Response) -> Void
     }
     
-    fileprivate var events = [String : EventInfo]()
+    private var events = [String : EventInfo]()
 }
 
 extension E2 {
@@ -28,7 +28,7 @@ extension E2 {
         E2.shared.register(thread: .main, name: name.value, handler: handler)
     }
     
-    fileprivate func register(thread: E2.Queue, name: String, handler: @escaping (E2.Response) -> Void) {
+    private func register(thread: E2.Queue, name: String, handler: @escaping (E2.Response) -> Void) {
         if events[name] != nil {
             assertionFailure("E2.Name \"\(name)\" is already used.")
         }
@@ -55,7 +55,7 @@ extension E2 {
         }
     }
     
-    fileprivate func emit(_ response: E2.Response, _ name: String) {
+    private func emit(_ response: E2.Response, _ name: String) {
         
         defer {
             E2.removeEvent(name: E2.Name(name))
