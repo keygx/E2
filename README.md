@@ -3,7 +3,7 @@
 E2 is Event Emitter library in Swift.
 
 ## Requirements
-- Swift 3.1
+- Swift 4.0
 - iOS 8.0 or later
 
 ## Installation
